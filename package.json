@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001",
-  "homepage": "/react-fruit",
+  "homepage": "https://chenjirak.github.io/react-fruit",
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
     "@types/react": "^18.3.12",
