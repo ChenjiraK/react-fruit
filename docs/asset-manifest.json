@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.1a86aa3b.css",
-    "main.js": "/static/js/main.d155b25b.js",
-    "static/js/453.c926417d.chunk.js": "/static/js/453.c926417d.chunk.js",
-    "static/media/SukhumvitSet-Light.ttf": "/static/media/SukhumvitSet-Light.dd01d5baeefa624cb699.ttf",
-    "static/media/SukhumvitSet-Bold.ttf": "/static/media/SukhumvitSet-Bold.199b4d73dcf8e8dedd71.ttf",
-    "static/media/SukhumvitSet-Medium.ttf": "/static/media/SukhumvitSet-Medium.e1fd49b5e0114c002dff.ttf",
-    "static/media/SukhumvitSet-SemiBold.ttf": "/static/media/SukhumvitSet-SemiBold.605549356e5123f57d82.ttf",
-    "index.html": "/index.html",
-    "main.1a86aa3b.css.map": "/static/css/main.1a86aa3b.css.map",
-    "main.d155b25b.js.map": "/static/js/main.d155b25b.js.map",
-    "453.c926417d.chunk.js.map": "/static/js/453.c926417d.chunk.js.map"
+    "main.css": "/react-fruit/static/css/main.e2fd7374.css",
+    "main.js": "/react-fruit/static/js/main.c0b55642.js",
+    "static/js/453.c926417d.chunk.js": "/react-fruit/static/js/453.c926417d.chunk.js",
+    "static/media/SukhumvitSet-Light.ttf": "/react-fruit/static/media/SukhumvitSet-Light.dd01d5baeefa624cb699.ttf",
+    "static/media/SukhumvitSet-Bold.ttf": "/react-fruit/static/media/SukhumvitSet-Bold.199b4d73dcf8e8dedd71.ttf",
+    "static/media/SukhumvitSet-Medium.ttf": "/react-fruit/static/media/SukhumvitSet-Medium.e1fd49b5e0114c002dff.ttf",
+    "static/media/SukhumvitSet-SemiBold.ttf": "/react-fruit/static/media/SukhumvitSet-SemiBold.605549356e5123f57d82.ttf",
+    "index.html": "/react-fruit/index.html",
+    "main.e2fd7374.css.map": "/react-fruit/static/css/main.e2fd7374.css.map",
+    "main.c0b55642.js.map": "/react-fruit/static/js/main.c0b55642.js.map",
+    "453.c926417d.chunk.js.map": "/react-fruit/static/js/453.c926417d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1a86aa3b.css",
-    "static/js/main.d155b25b.js"
+    "static/css/main.e2fd7374.css",
+    "static/js/main.c0b55642.js"
   ]
 }
