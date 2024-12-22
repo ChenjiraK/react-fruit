@@ -72,8 +72,9 @@ const Landing : React.FC = () =>  {
                </div>
                ))}
             </div>
+
             <div className="fruit m-2">
-               <div className="thead">Fruit</div>
+               <div className="thead">Fruits</div>
                {fruitList.map((fruit, index) => (
                <div key={`fruit_${index}`} className="m-2">
                   <MainButton onClick={() => removeFruitList(index)}>
@@ -83,7 +84,7 @@ const Landing : React.FC = () =>  {
                ))}
             </div>
             <div className="vegetable m-2">
-               <div className="thead">Vegetable</div>
+               <div className="thead">Vegetables</div>
                {vegetableList.map((vegetable, index) => (
                <div key={`vegetable_${index}`} className="m-2">
                   <MainButton onClick={() => removeVegetableList(index)}>
