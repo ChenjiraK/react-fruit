@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'main';
+    src: url('./assets/font/SukhumvitSet-Light.ttf') format('truetype');
+    font-weight: 400; // Normal
+    font-display: swap;
+}
+@font-face {
+    font-family: 'main';
+    src: url('./assets/font/SukhumvitSet-Medium.ttf') format('truetype');
+    font-weight: 500; // Medium
+    font-display: swap;
+}
+@font-face {
+    font-family: 'main';
+    src: url('./assets/font/SukhumvitSet-SemiBold.ttf') format('truetype');
+    font-weight: 600; // Semi-bold
+    font-display: swap;
+}
+@font-face {
+    font-family: 'main';
+    src: url('./assets/font/SukhumvitSet-Bold.ttf') format('truetype');
+    font-weight: 700; // Bold
+    font-display: swap;
+}

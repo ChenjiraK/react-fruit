@@ -1,0 +1,14 @@
+.fruit , .vegetable {
+    border: 1px solid gray;
+    min-height: 550px;
+    .thead {
+        padding: 10px 0;
+        text-align: center;
+        background-color: lightgray;
+    }
+}
+
+.size-content {
+    width: 100%;
+    max-width: 1024px;
+}
