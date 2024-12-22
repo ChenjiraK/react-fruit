@@ -5,7 +5,7 @@ import Routes from './routes';
 
 const App: React.FC = () => {
    return (
-      <div className="font-medium">
+      <div id="root" className="font-medium">
          <Router basename="/react-fruit">
             <ToastContainer />
             <Routes />
