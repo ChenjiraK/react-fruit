@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import MainButton from '../components/Button/MainButton.tsx';
 import { ItemInterface } from '../types/Interface';
 import { Type } from '../helper/StaticValue'; 
 import JsonExample from '../Json/JsonExample.json';
 
 const Landing : React.FC = () =>  {
+   const navigator = useNavigate();
    const [list, setList] = useState<ItemInterface[]>(JsonExample);
    const [fruitList, setFruitList] = useState<ItemInterface[]>([]);
    const [vegetableList, setVegetableList] = useState<ItemInterface[]>([]);
    const timeout: number = 5000; //5 second
+
+   const onClickRoute = () => {
+      navigator('/group-data');
+   };
 
     function onClickItemList(item: ItemInterface, index: number): void {
       if (item.type.toLowerCase().includes(Type.fruit)) {
@@ -61,7 +67,11 @@ const Landing : React.FC = () =>  {
       }
   
     return(
-      <div className="flex justify-center">
+      <div>
+         <MainButton onClick={() => onClickRoute()}>
+            Group
+         </MainButton>
+         <div className="flex justify-center">
          <div className="grid grid-cols-3 size-content">
             <div className="m-4">
                {list.map((item, index) => (
@@ -94,6 +104,7 @@ const Landing : React.FC = () =>  {
                ))}
             </div>
          </div>
+      </div>
       </div>
     )
 }
