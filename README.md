@@ -9,6 +9,11 @@ npm install
 npm run start
 ```
 
+### unit test
+```sh
+** implement later **
+```
+
 ### route
 Auto Delete Todo List
 ```sh
