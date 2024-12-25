@@ -21,8 +21,8 @@ const Landing : React.FC = () =>  {
          removeList(index);
          // countdown for delete vegetable
          setTimeout(removeVegetableList, timeout);
-         }
       }
+   }
   
    function addList(item: ItemInterface): void {
       setList((list) => [...list, item]);
@@ -64,7 +64,7 @@ const Landing : React.FC = () =>  {
       <div>
          <div className="flex justify-center">
             <div className="grid grid-cols-3 size-content">
-               <div className="m-4">
+               <div className="m-4 list">
                   {list.map((item, index) => (
                   <div key={index} className="mb-2">
                      <MainButton onClick={() => onClickItemList(item, index)}>
@@ -73,7 +73,7 @@ const Landing : React.FC = () =>  {
                   </div>
                   ))}
                </div>
-               <div className="fruit m-2">
+               <div className="fruit m-2" data-testid="test-fruit-list">
                   <div className="thead">Fruits</div>
                   {fruitList.map((fruit, index) => (
                   <div key={`fruit_${index}`} className="m-2">
@@ -83,7 +83,7 @@ const Landing : React.FC = () =>  {
                   </div>
                   ))}
                </div>
-               <div className="vegetable m-2">
+               <div className="vegetable m-2" data-testid="vegetable-list">
                   <div className="thead">Vegetables</div>
                   {vegetableList.map((vegetable, index) => (
                   <div key={`vegetable_${index}`} className="m-2">
