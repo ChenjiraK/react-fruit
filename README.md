@@ -11,7 +11,7 @@ npm run start
 
 ### unit test
 ```sh
-** implement later **
+npm run test
 ```
 
 ### route
