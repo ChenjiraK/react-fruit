@@ -80,7 +80,7 @@ const Landing : React.FC = () =>  {
         }
       };
       // eslint-disable-next-line
-    }, [isActive, itemsSelected]);
+    }, [isActive, itemsSelected]); //เมื่อ isActive และ itemsSelected มีการเปลี่ยนแปลง useEffect จะทำงานอีกรอบ
   
     return(
       <div>
