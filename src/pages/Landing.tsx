@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import MainButton from '../components/Button/MainButton.tsx';
 import { ItemInterface } from '../types/Interface';
 import { Type } from '../helper/StaticValue'; 
@@ -6,24 +6,17 @@ import JsonExample from '../Json/JsonExample.json';
 
 const Landing : React.FC = () =>  {
    const [list, setList] = useState<ItemInterface[]>(JsonExample);
-   const [fruitList, setFruitList] = useState<ItemInterface[]>([]);
-   const [vegetableList, setVegetableList] = useState<ItemInterface[]>([]);
-   const timeout: number = 5000; //5 second
+   const [itemsSelected, setItemsSelected] = useState<ItemInterface[]>([]);
+   const [isActive, setIsActive] = useState<boolean>(false);
+   //set state timmer for handle function
+   const timeoutRef = useRef<number | null>(null);
+   const removalIntervalRef = useRef<number | null>(null);
 
    function onClickItemList(item: ItemInterface, index: number): void {
-      if (item.type.toLowerCase().includes(Type.fruit)) {
-         addFruitList(item);
-         removeList(index);
-         // countdown for delete fruit
-         setTimeout(removeFruitList, timeout);
-      }  else if (item.type.toLowerCase().includes(Type.vegetable)) {
-         addVegetableList(item);
-         removeList(index);
-         // countdown for delete vegetable
-         setTimeout(removeVegetableList, timeout);
-      }
+      setItemsSelected((list) => [...list, item]);
+      removeList(index);
    }
-  
+
    function addList(item: ItemInterface): void {
       setList((list) => [...list, item]);
    }
@@ -31,34 +24,63 @@ const Landing : React.FC = () =>  {
    function removeList(index: number): void {
       setList((list) => list.filter((_, i) => i !== index));
    }
+
+   const removeItemsSelected = (item: ItemInterface | null = null) => {
+      if(item) {
+         const index = itemsSelected.indexOf(item);
+         setItemsSelected((prevItems) => {
+            const addItem = prevItems[index];
+            if (addItem) {
+               addList(addItem);
+            }
+            return prevItems.filter((_, i) => i !== index);
+         });
+      }
+    };
   
-   function addFruitList(item: ItemInterface): void {
-      setFruitList((fruits) => [...fruits, item]);
-   }
+    const handleDeleteItemsSelected = () => {
+      setIsActive(true)
+      // รีเซ็ต timeout เมื่อมีกิจกรรมของผู้ใช้
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
   
-   function addVegetableList(item: ItemInterface): void {
-      setVegetableList((vegetables) => [...vegetables, item]);
-   }
+      timeoutRef.current = window.setTimeout(() => {
+         setIsActive(false)
+      }, 5000);
+    };
+
+    useEffect(() => {
+      //listener click event
+      window.addEventListener("click", handleDeleteItemsSelected);
+      // ตั้ง timeout เริ่มต้น
+      handleDeleteItemsSelected();
+
+      return () => {
+        // ลบ event listener และ timeout เมื่อ component ถูกทำลาย
+        window.removeEventListener("click", handleDeleteItemsSelected);
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
+      };
+    }, []);
+
+    useEffect(() => {
+      if (!isActive && itemsSelected.length > 0) {
+         //เมื่อไม่มีการ click (isActive = false), และ items มี data ใน list
+         removalIntervalRef.current = window.setInterval(() => {
+            removeItemsSelected(itemsSelected[0]);
+         }, 1000);
+      }
   
-   function removeFruitList(index: number = 0): void {
-      setFruitList((fruits) => {
-         const item = fruits[index];
-         if (item) {
-            addList(item);
-         }
-         return fruits.filter((_, i) => i !== index);
-      });
-   }
-  
-   function removeVegetableList(index: number = 0): void {
-      setVegetableList((vegetables) => {
-         const item = vegetables[index];
-         if (item) {
-            addList(item);
-         }
-         return vegetables.filter((_, i) => i !== index);
-      });
-   }
+      // ล้าง interval เมื่อ component ถูกทำลาย
+      return () => {
+        if (removalIntervalRef.current) {
+          clearInterval(removalIntervalRef.current);
+        }
+      };
+      // eslint-disable-next-line
+    }, [isActive, itemsSelected]);
   
     return(
       <div>
@@ -66,31 +88,35 @@ const Landing : React.FC = () =>  {
             <div className="grid grid-cols-3 size-content">
                <div className="m-4 list">
                   {list.map((item, index) => (
-                  <div key={index} className="mb-2">
-                     <MainButton onClick={() => onClickItemList(item, index)}>
-                        {item.name}
-                     </MainButton>
-                  </div>
+                     <div key={`list_${index}`} className="mb-2">
+                        <MainButton onClick={() => onClickItemList(item, index)}>
+                           {item.name}
+                        </MainButton>
+                     </div>
                   ))}
                </div>
                <div className="fruit m-2" data-testid="test-fruit-list">
                   <div className="thead">Fruits</div>
-                  {fruitList.map((fruit, index) => (
-                  <div key={`fruit_${index}`} className="m-2">
-                     <MainButton onClick={() => removeFruitList(index)}>
-                        {fruit.name}
-                     </MainButton>
-                  </div>
+                  {itemsSelected
+                     .filter((fruit) => fruit.type.toLowerCase() === Type.fruit)
+                     .map((fruit, index) => (
+                        <div key={`select_fruit_${index}`} className="m-2 flex justify-center">
+                           <MainButton onClick={() => removeItemsSelected(fruit)}>
+                              {fruit.name}
+                           </MainButton>
+                        </div>
                   ))}
                </div>
                <div className="vegetable m-2" data-testid="vegetable-list">
                   <div className="thead">Vegetables</div>
-                  {vegetableList.map((vegetable, index) => (
-                  <div key={`vegetable_${index}`} className="m-2">
-                     <MainButton onClick={() => removeVegetableList(index)}>
-                        {vegetable.name}
-                     </MainButton>
-                  </div>
+                  {itemsSelected
+                     .filter((vegetable) => vegetable.type.toLowerCase() === Type.vegetable)
+                     .map((vegetable, index) => (
+                        <div key={`vegetable_${index}`} className="m-2 flex justify-center">
+                           <MainButton onClick={() => removeItemsSelected(vegetable)}>
+                              {vegetable.name}
+                           </MainButton>
+                        </div>
                   ))}
                </div>
             </div>
