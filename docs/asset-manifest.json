@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-fruit/static/css/main.571a19ce.css",
-    "main.js": "/react-fruit/static/js/main.13bd7a7a.js",
+    "main.js": "/react-fruit/static/js/main.681f7a83.js",
     "static/js/453.c926417d.chunk.js": "/react-fruit/static/js/453.c926417d.chunk.js",
     "static/media/SukhumvitSet-Light.ttf": "/react-fruit/static/media/SukhumvitSet-Light.dd01d5baeefa624cb699.ttf",
     "static/media/SukhumvitSet-Bold.ttf": "/react-fruit/static/media/SukhumvitSet-Bold.199b4d73dcf8e8dedd71.ttf",
@@ -9,11 +9,11 @@
     "static/media/SukhumvitSet-SemiBold.ttf": "/react-fruit/static/media/SukhumvitSet-SemiBold.605549356e5123f57d82.ttf",
     "index.html": "/react-fruit/index.html",
     "main.571a19ce.css.map": "/react-fruit/static/css/main.571a19ce.css.map",
-    "main.13bd7a7a.js.map": "/react-fruit/static/js/main.13bd7a7a.js.map",
+    "main.681f7a83.js.map": "/react-fruit/static/js/main.681f7a83.js.map",
     "453.c926417d.chunk.js.map": "/react-fruit/static/js/453.c926417d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.571a19ce.css",
-    "static/js/main.13bd7a7a.js"
+    "static/js/main.681f7a83.js"
   ]
 }
